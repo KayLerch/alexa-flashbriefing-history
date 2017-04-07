@@ -1,0 +1,21 @@
+# package directories
+node_modules
+jspm_packages
+
+# Serverless directories
+.serverless
+
+# content
+feeds/birthdays/*.json
+feeds/culture/*.json
+feeds/economics/*.json
+feeds/history/*.json
+feeds/science/*.json
+feeds/sports/*.json
+
+!feeds/birthdays/mm-dd.json
+!feeds/culture/mm-dd.json
+!feeds/economics/mm-dd.json
+!feeds/history/mm-dd.json
+!feeds/science/mm-dd.json
+!feeds/sports/mm-dd.json
