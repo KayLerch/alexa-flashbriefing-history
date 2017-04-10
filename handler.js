@@ -29,7 +29,7 @@ module.exports.feed = (event, context, callback) => {
           var exactly = ['exakt','genau',''].sort( function() { return 0.5 - Math.random() } );
           var happened = ['Geschehen','Passiert','Ereignet'].sort( function() { return 0.5 - Math.random() } );
           // shuffle list and pick last three
-          years.sort( function() { return 0.5 - Math.random() } ).slice(-3).sort().forEach(function (year) {
+          years.sort( function() { return 0.5 - Math.random() } ).slice(-3).sort().reverse().forEach(function (year) {
             var weekday = new Date(year, upDate.getMonth(), upDate.getDate()).getDay();
             var dateStr = weekdays[weekday] + ' den ' + dateFormat(upDate, 'dd.') + months[upDate.getMonth()] + ' ' + year.replace('-', '') + (year.startsWith('-') ? ' vor Christus' : '');
             var text = (resort == 'birthdays' ?
