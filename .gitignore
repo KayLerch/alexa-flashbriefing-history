@@ -8,16 +8,15 @@ jspm_packages
 .serverless
 
 # content
-feeds/birthdays/*.json
-feeds/culture/*.json
-feeds/economics/*.json
-feeds/history/*.json
-feeds/science/*.json
-feeds/sports/*.json
-
-!feeds/birthdays/mm-dd.json
-!feeds/culture/mm-dd.json
-!feeds/economics/mm-dd.json
-!feeds/history/mm-dd.json
-!feeds/science/mm-dd.json
-!feeds/sports/mm-dd.json
+feeds/01
+feeds/02
+feeds/03
+feeds/04
+feeds/05
+feeds/06
+feeds/07
+feeds/08
+feeds/09
+feeds/10
+feeds/11
+feeds/12
