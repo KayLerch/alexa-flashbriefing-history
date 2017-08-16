@@ -9,7 +9,6 @@ var s3 = new aws.S3();
 
 module.exports.feed = (event, context, callback) => {
   var upDate = new Date();
-  upDate.setMinutes(0); // full hour
   var thisYear = new Date().getFullYear(); // full year
   var resort = event.path.toString().replace('/', '');
 
@@ -25,7 +24,7 @@ module.exports.feed = (event, context, callback) => {
         else {
           var body = JSON.parse(data.Body);
           var years = Object.keys(body);
-          var ms = 0;
+          var minutes = 0;
           var exactly = ['exakt','genau',''].sort(function() { return 0.5 - Math.random() } );
           var happened = ['Geschehen','Passiert','Ereignet'].sort(function() { return 0.5 - Math.random() } );
           // shuffle list and pick last three
@@ -38,9 +37,9 @@ module.exports.feed = (event, context, callback) => {
                   var dateStr = weekdays[weekday] + ' den ' + dateFormat(upDate, 'dd.') + months[upDate.getMonth()] + ' ' + year.replace('-', '') + (year.startsWith('-') ? ' vor Christus' : '');
                   var text = (resort == 'birthdays' ?
                       ("Geboren vor " + (thisYear - parseInt(year)) + " Jahren wurde " + body[year].text + ", am " + dateStr) :
-                      (happened[ms] + " vor " + exactly[ms] + " " + (thisYear - parseInt(year)) + " Jahren, am " + dateStr + ". " + body[year].text));
+                      (happened[minutes] + " vor " + exactly[minutes] + " " + (thisYear - parseInt(year)) + " Jahren, am " + dateStr + ". " + body[year].text));
                   // ensure unique update-timestamp
-                  upDate.setMilliseconds(ms++);
+                  upDate.setMinutes(59 - minutes++);
                   var feed = {
                       uid: "urn:uuid:" + uuidV4(),
                       updateDate: upDate.toISOString(),
